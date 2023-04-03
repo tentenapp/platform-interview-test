@@ -1,0 +1,45 @@
+syntax = "proto3";
+package tenten.interview;
+
+/// API exposed by the Gateway service
+service Gateway {
+    // TODO: Write your own service definition
+}
+
+service StatusReader {
+    // Must not change the definition of this service
+
+    rpc FetchOnlineUsersInLast3Mins(FetchOnlineUsersInLast3MinsRequest)
+        returns (FetchOnlineUsersInLast3MinsResponse);
+}
+
+// Message periodically sent by the gateway to a client.
+message Ping {
+    // Must not change this message
+}
+
+// Message sent by the client in response to a ping
+message Pong {
+    // Must no change this message
+    Status  status = 1;
+}
+
+message FetchOnlineUsersInLast3MinsRequest {
+    // Must not change this message
+}
+
+message FetchOnlineUsersInLast3MinsResponse {
+    // Must not change this message
+    uint64  online_users = 1;
+}
+
+// Status of the client.
+//
+// Let's call T the current time in milliseconds elapsed since the UNIX epoch.
+// Client must return `STATUS_EVEN` if T is an even number.
+// Client must return `STATUS_ODD` if T is an odd number.
+enum Status {
+    STATUS_UNKNOWN  = 0;
+    STATUS_EVEN     = 1;
+    STATUS_ODD      = 2;
+}
